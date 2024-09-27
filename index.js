@@ -1,14 +1,17 @@
-const express = require("express")
-const app = express()
-const dbConnection = require("./config/config")
-const router = require("./routes/task")
+const express = require("express");
+const app = express();
+const PORT = 8080;
+const {dbConnection} = require("./config/config");
+const router = require("./routes");
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 app.use("/", router)
 
-dbConnection()
+dbConnection();
 
-const PORT = 8080
 app.listen(PORT, () => console.log(`La aplicación está escuchando en el puerto http://localhost:${PORT}`))
+
+
+
